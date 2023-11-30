@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import logger from "redux-logger";
 import storage from 'redux-persist/lib/storage' //using local storage
 import { persistStore, persistReducer } from 'redux-persist'
-import userSlice from "./userSlice"
+import userSlice from "./reducers/loginUserSlice"
 
 const persistConfig = {
   key: 'root',

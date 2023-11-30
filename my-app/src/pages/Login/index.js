@@ -2,13 +2,32 @@ import { TiSocialFacebook } from "react-icons/ti";
 import { FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { MdLock } from "react-icons/md";
-
 import { Formik, Form, Field } from "formik";
 import Link from "next/link";
-import * as Yup from "yup";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "@/Redux/reducers/loginUserSlice";
+
+
 const Login = () => {
-    const [signUp, setSignUp] = useState(false)
+  
+  const dispatch = useDispatch();
+
+
+const login = async (values) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+  };
+  const res = await fetch("http://localhost:3002/login", requestOptions);
+  const data = await res.json()
+  
+  
+
+  if(data.logedIn){
+    dispatch(setUserDetails(data))
+  }
+}
 
     
    
@@ -45,13 +64,8 @@ const Login = () => {
                 email: "",
                 password: "",
               }}
-              onSubmit={async(values) => {
-                const requestOptions = {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(values),
-                };
-                const res = await fetch("http://localhost:3002/login", requestOptions);
+              onSubmit={(values) => {
+               login(values)
               }}
             >
               {({ errors, touched }) => (
@@ -114,12 +128,12 @@ const Login = () => {
             Fill up the personal information and start jurney with us
           </p>
 
-          <a
+          <Link
             className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
-            onClick={() => setSignUp(true)}
+            href={'../Register'}
           >
             Sign Up
-          </a>
+          </Link>
         
         </div>
       </div>
