@@ -1,13 +1,13 @@
 
 import {  useSelector } from "react-redux";
 import Login from "./Login";
-import LandingPage from "./LandingPage";
+import Home from "./Home";
 
 
-export default function Home() {
+export default function Index() {
   const {userToken} = useSelector(state => state.user);
   if(userToken){
-    return(<LandingPage/>)
+    return(<Home/>)
     
   }
   return (
