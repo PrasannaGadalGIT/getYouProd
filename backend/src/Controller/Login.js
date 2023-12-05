@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
           {
             email : req.body.email
           },
-          process.env.SECRET_KEY
+         
         )
         res.json({
           logedIn: true,
