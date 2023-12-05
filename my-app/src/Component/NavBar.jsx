@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { ShoppingCart, Search } from "lucide-react";
+import { ShoppingCart, Search, LogOut } from "lucide-react";
 
 function NavBar() {
   return (
     
     <div className=" flex justify-around text-white">
       <div className=" font-bold text-2xl">
-        <h3>Furniture</h3>
+        <Link href={"/"}>Furniture</Link>
       </div>
       <div className=" flex font-bold space-x-8 justify-center ">
         <Link href="">Home</Link>
@@ -27,6 +27,10 @@ function NavBar() {
         <Link href={""}>
           {" "}
           <Search />
+        </Link>
+        <Link href={""}>
+          {" "}
+          <LogOut />
         </Link>
         </div>
       

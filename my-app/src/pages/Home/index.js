@@ -58,9 +58,9 @@ function Home() {
           for relaxing homestay.
         </p>
         <div className=" mt-5 ml-36 text-white text-lg flex">
-          <button className="  bg-white text-green-700 font-bold w-40 p-2 text-lg rounded-xl">
+          <Link className="  bg-white text-green-700 font-bold w-40 p-2 text-lg rounded-xl text-center" href={"../shop"}>
             Shop Now &#129170;
-          </button>
+          </Link>
           <Link
             href={""}
             className="  ml-5 bg-white text-green-700 font-bold  p-2 text-lg rounded-full "
