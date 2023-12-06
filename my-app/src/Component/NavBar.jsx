@@ -1,8 +1,32 @@
 import React from "react";
 import Link from "next/link";
-import { ShoppingCart, Search, LogOut } from "lucide-react";
-
+import { ShoppingCart, Search, LogOut, } from "lucide-react";
+import {  useDispatch, useSelector } from "react-redux";
+import { setUserDetails } from "@/Redux/reducers/loginUserSlice";
 function NavBar() {
+  const {id, email, username} = useSelector(state=> state.user);
+  const dispatch = useDispatch()
+
+  
+
+
+  const logOut = async (values) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    };
+    const res = await fetch("http://localhost:3002/logOut", requestOptions);
+    const data = await res.json()
+    
+    
+  
+    
+      dispatch(setUserDetails(data))
+    
+  }
+  
+  
   return (
     
     <div className=" flex justify-around text-white">
@@ -28,7 +52,7 @@ function NavBar() {
           {" "}
           <Search />
         </Link>
-        <Link href={""}>
+        <Link href={""} onClick={() => logOut()}>
           {" "}
           <LogOut />
         </Link>

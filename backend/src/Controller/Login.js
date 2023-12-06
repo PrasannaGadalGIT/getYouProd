@@ -23,7 +23,8 @@ const registerNewUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const data = await User.findOne({email : req.body.email}) // checking whether the email exists or not 
+  const data = await User.findOne({email : req.body.email}) 
+ 
 
   if(data){
     const passwordMatches = await bcrypt.compare(req.body.password, data.password)
@@ -39,14 +40,25 @@ const loginUser = async (req, res) => {
           msg: "successfully logned into account",
           id: data._id,
           userToken: token,
-          email : data.email
+          email : data.email,
+          userName : data.username
         });
         
         }
       }
   }
-
+const logOutuser = async(req, res) => {
+  const data = await User.findOne({email : req.body.email}) 
+  res.json({
+    logedIn: false,
+    msg: "logged out",
+  
+    userToken: null,
+    email :"",
+    userName : ""
+  });
+}
  
 
 
-module.exports = {registerNewUser, loginUser}
+module.exports = {registerNewUser, loginUser, logOutuser}

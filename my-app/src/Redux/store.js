@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 import logger from "redux-logger";
 import storage from 'redux-persist/lib/storage' //using local storage
 import { persistStore, persistReducer } from 'redux-persist'
-import userSlice from "./reducers/loginUserSlice"
+
+import loginUserSlice from "./reducers/loginUserSlice";
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +12,7 @@ const persistConfig = {
 }
 
 const reducer = combineReducers({
-  user: userSlice,
+  user: loginUserSlice,
   
 });
 // the user os persisted even after the login

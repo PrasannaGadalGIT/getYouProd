@@ -119,7 +119,7 @@ const Login = () => {
             </div>
           </div>
         ) : (
-          <RegisterPopUp />
+         alert("sign up")
         )}
 
         {/*Trigger to Sign Up */}
