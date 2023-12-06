@@ -14,19 +14,24 @@ const Login = () => {
 
 
 const login = async (values) => {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
-  };
-  const res = await fetch("http://localhost:3002/login", requestOptions);
-  const data = await res.json()
+  try{
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    };
+    const res = await fetch("http://localhost:3002/login", requestOptions);
+    const data = await res.json()
+    
+    
   
-  
-
-  if(data.logedIn){
-    dispatch(setUserDetails(data))
+    if(data.logedIn){
+      dispatch(setUserDetails(data))
+    }
+  }catch(e){
+    alert(e)
   }
+  
 }
 
     

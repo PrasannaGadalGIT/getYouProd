@@ -17,6 +17,8 @@ const registerNewUser = async (req, res) => {
   const data = await User.create(req.body);
    if (data) {
      res.json({
+      
+
        msg: "registration succes",
      });
    }
@@ -33,6 +35,8 @@ const loginUser = async (req, res) => {
           {
             email : req.body.email
           },
+          process.env.SECRET_KEY
+
          
         )
         res.json({

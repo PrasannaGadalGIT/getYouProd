@@ -5,10 +5,14 @@ import { Play } from "lucide-react";
 import Link from "next/link";
 import config from "../../config/index";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-function Home() {
+function Home({userDetail}) {
   const [whatToDo, setWhatToDo] = useState({});
   const [award, setAward] = useState({})
+  
+  const tailwindClass = " flex justify-around text-white p-4"
+
   const fetchWhatToDo = async () => {
     try {
       const response = await fetch("/what-we-do.JSON");
@@ -45,10 +49,14 @@ function Home() {
     designAwards();
   }, []);
 
+
+
+ 
+
   return (
     <div>
       <div className=" bg-green-700 " style={{ height: "75vh" }}>
-        <NavBar />
+        <NavBar tailwindClasses={tailwindClass}/>
         <h1 className=" mt-28 ml-36 text-white text-8xl">
           Discover the <span className=" block">Best Furnitures</span>
         </h1>
@@ -88,7 +96,7 @@ function Home() {
       {/*Award Section */}
       <div className=" flex justify-center">
         <div className="  flex  justify-between mt-16 bg-green-100 h-96 w-3/4 ">
-          <Image src={'/images/award.jpg'} height={384} width={600} />
+          <Image src={'/images/award.jpg'} height={384} width={600} alt="Image not found"/>
             <div className=" p-10">
               <h2 className=" text-5xl text-green-700 text-left p-10">{award.tittle}</h2>
               <p className=" text-lg text-green-700 p-10 text-left">{award.content}</p>

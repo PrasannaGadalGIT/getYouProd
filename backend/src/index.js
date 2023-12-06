@@ -6,11 +6,13 @@ require("dotenv").config();
 app.use(cors())
 app.use(express.json());
 const connectDb  = require('./DBConnect/DBConnect')
-const userRoute = require("./Route/Login")
+const loginRoute = require("./Route/Login")
+const userRoute = require("./Route/User")
 
 connectDb()
 
 app.use("/", userRoute)
+app.use("/", loginRoute)
 
 
 

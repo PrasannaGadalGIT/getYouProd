@@ -119,7 +119,7 @@ const Login = () => {
             </div>
           </div>
         ) : (
-         alert("sign up")
+         ""
         )}
 
         {/*Trigger to Sign Up */}
@@ -129,13 +129,33 @@ const Login = () => {
           <p className=" mb-10">
             Fill up the personal information and start jurney with us
           </p>
-
-          <a
-            className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
-            onClick={() => setSignUp(true)}
-          >
-            Sign Up
-          </a>
+          {!signUp ? (
+            <>
+              <Link
+                className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
+               
+                href={"/"}
+              >
+                Sign In
+              </Link>
+              <Link href={"/"} className=" block">
+                Already an user?
+              </Link>
+            </>
+          ) : (
+            <>
+              <a
+                className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
+                onClick={() => setSignUp(true)}
+              >
+                Sign Up
+              </a>
+              <Link href={"/"} className=" block">
+                Already an user?
+              </Link>
+            </>
+          )}
+          
         </div>
       </div>
     </main>
