@@ -1,13 +1,14 @@
-import NavBar from "@/Component/NavBar";
+import NavBar from "@/components/NavBar";
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 import Link from "next/link";
-import config from "../../config/index";
+
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Footer from "@/components/Footer";
 
-function Home({userDetail}) {
+function Home() {
   const [whatToDo, setWhatToDo] = useState({});
   const [award, setAward] = useState({})
   
@@ -15,7 +16,7 @@ function Home({userDetail}) {
 
   const fetchWhatToDo = async () => {
     try {
-      const response = await fetch("/what-we-do.JSON");
+      const response = await fetch("/config/what-we-do.JSON");
 
       if (!response.ok) {
         throw new Error("Faild to fetch");
@@ -31,7 +32,7 @@ function Home({userDetail}) {
 
   const designAwards = async() => {
     try {
-      const response = await fetch("/award.json");
+      const response = await fetch("/config/award.json");
 
       if (!response.ok) {
         throw new Error("Faild to fetch");
@@ -106,6 +107,8 @@ function Home({userDetail}) {
 
 
     <h1 className=" text-center text-6xl text-green-700 p-20">Browse By Categories</h1>
+
+    <Footer/>
     </div>
   );
 }
