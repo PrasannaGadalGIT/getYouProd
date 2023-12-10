@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
+import Body from "@/components/Body";
 const Shop = () => {
   const [productDetail, setProductDetails] = useState([]);
   const tailwindClasses = " flex justify-around text-black p-4";
@@ -31,20 +32,14 @@ const Shop = () => {
 
   return (
     <div>
+      
       <NavBar tailwindClasses={tailwindClasses} />
-      <div className=" bg-green-800 h-80 flex justify-center p-20">
-        <div className=" ">
-          <h1 className=" text-8xl font-semibold text-white">Shop</h1>
-          <p className=" text-center p-4 text-white m-3">
-            Home <ArrowRight className=" inline p-1" /> Shop
-          </p>
-        </div>
-      </div>
+      <Body text="Shop"/>
 
-      <div className=" flex mt-20 p-5">
+      <div className="grid grid-cols-3 ">
         {productDetail.length > 0
           ? productDetail.map((item, index) => {
-              return <ProductCard Product={item} key={index}/>;
+              return <ProductCard product={item} key={index}/>;
             })
           : "loading.."}
       </div>

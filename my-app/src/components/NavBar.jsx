@@ -56,7 +56,7 @@ function NavBar({ tailwindClasses }) {
         <Link href="/">Home</Link>
         <Link href="">About</Link>
         <Link href="/shop">Shop</Link>
-        <Link href="">Products</Link>
+        <Link href="/products">Products</Link>
         <Link href="">Categories</Link>
         <Link href="">Contact Us</Link>
       </div>
