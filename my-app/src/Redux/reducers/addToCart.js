@@ -19,7 +19,8 @@ const CartSlice = createSlice({
         productId: action.payload.id,
         price: action.payload.price,
         productName: action.payload.name,
-        discription: action.payload.discription
+        description: action.payload.description,
+        image : action.payload.image
       };
     },
   },

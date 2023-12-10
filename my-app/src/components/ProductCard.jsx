@@ -3,13 +3,16 @@ import Image from "next/image";
 import { Heart, ShoppingCart } from "lucide-react";
 import { setCartDetails } from "@/Redux/reducers/addToCart";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 function ProductCard({ product }) {
  const dispatch = useDispatch()
  const [cart, setcart] = useState({})
+ const router = useRouter()
 
  const handleAddToCart = () => {
   dispatch(setCartDetails(product));
+  router.push('/products')
 };
 
   return (
@@ -27,7 +30,7 @@ function ProductCard({ product }) {
             height={0}
             className=" w-full h-full z-0 rounded-2xl"
           />
-          <div className=" border border-green h-24 w-full rounded-2xl   bg-green-700">
+          <div className=" border border-green h-24 w-full rounded-2xl   bg-green-700"  onClick={() => handleAddToCart()}>
             <h4 className=" text-center text-xl text-white font-bold">
               {product.name}
             </h4>
@@ -35,7 +38,7 @@ function ProductCard({ product }) {
               {product.price}
             </p>
             <div className=" flex justify-around text-white">
-              <button onClick={() => handleAddToCart()}>
+              <button>
                 <ShoppingCart />
               </button>
               <button>
