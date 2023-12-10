@@ -15,15 +15,25 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 
-
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
 function NavBar({ tailwindClasses }) {
   const { id, email, username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
-
+ 
+  
+  
   const logOut = async (values) => {
     const requestOptions = {
       method: "POST",
@@ -43,33 +53,40 @@ function NavBar({ tailwindClasses }) {
         <Link href={"/"}>Furniture</Link>
       </div>
       <div className=" flex font-bold space-x-8 justify-center s">
-        <Link href="/" >
-          Home
-        </Link>
+        <Link href="/">Home</Link>
         <Link href="">About</Link>
-        <Link href="/shop" >
-          Shop
-        </Link>
+        <Link href="/shop">Shop</Link>
         <Link href="">Products</Link>
         <Link href="">Categories</Link>
         <Link href="">Contact Us</Link>
       </div>
-      <div className=" flex space-x-8 justify-end">
-        <Link href={""}>
-          {" "}
-          <ShoppingCart />
-        </Link>
-        <Link href={""}>
+      <div className=" flex justify-end">
+        <NavigationMenu className=" ">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className=" -mt-2">
+                <Link href={""}>
+                  {" "}
+                  <ShoppingCart />
+                </Link>
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-6 w-[250px] "></ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+        <Link href={""} className=" mr-6">
           {" "}
           <Search />
         </Link>
         <Link href={""}>
           {" "}
           <AlertDialog>
-            <AlertDialogTrigger asChild >
+            <AlertDialogTrigger asChild>
               <Link href={""}>
                 {" "}
-                <LogOut />
+                <LogOut/>
               </Link>
             </AlertDialogTrigger>
             <AlertDialogContent className=" bg-green-600">

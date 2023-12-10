@@ -41,10 +41,10 @@ const Shop = () => {
         </div>
       </div>
 
-      <div className=" flex m-5 p-5">
+      <div className=" flex mt-20 p-5">
         {productDetail.length > 0
-          ? productDetail.map((item) => {
-              return <ProductCard Product={item} />;
+          ? productDetail.map((item, index) => {
+              return <ProductCard Product={item} key={index}/>;
             })
           : "loading.."}
       </div>

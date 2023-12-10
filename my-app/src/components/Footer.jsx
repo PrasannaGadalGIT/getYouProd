@@ -81,18 +81,18 @@ const Footer = () => {
           </div>
           <h2 className=" ml-2 my-2">Follow us....</h2>
           <div className=" flex j my-2">
-              <a className="text-white  border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
+              <Link href= {""} className="text-white  border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
                 <Facebook className=" text-sm" />
-              </a>
-              <a className=" text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
+              </Link>
+              <Link href= {""} className=" text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
                 <FaGoogle className=" text-xl" />
-              </a>
-              <a className="text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
+              </Link>
+              <Link href= {""} className="text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
                 <FaLinkedin className=" text-xl" />
-              </a>
-              <a className=" text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
+              </Link>
+              <Link href= {""} className=" text-white border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer bg-green-700">
                 <Twitter className=" text-sm" />
-              </a>
+              </Link>
             </div>
         </div>
       </div>

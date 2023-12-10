@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage' //using local storage
 import { persistStore, persistReducer } from 'redux-persist'
 
 import loginUserSlice from "./reducers/loginUserSlice";
+import addToCart from "./reducers/addToCart";
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   user: loginUserSlice,
+  cart: addToCart
   
 });
 // the user os persisted even after the login

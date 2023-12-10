@@ -22,7 +22,7 @@ const login = async (values) => {
     };
     const res = await fetch("http://localhost:3002/login", requestOptions);
     const data = await res.json()
-    
+    console.log(data)
     
   
     if(data.logedIn){
@@ -52,15 +52,15 @@ const login = async (values) => {
             </h2>
             <div className=" border-2 w-10 border-green-500 inline-block "></div>
             <div className=" flex justify-center my-2">
-              <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+              <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                 <TiSocialFacebook className=" text-sm" />
-              </a>
-              <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+              </Link>
+              <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                 <FaGoogle className=" text-sm" />
-              </a>
-              <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+              </Link>
+              <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                 <FaLinkedin className=" text-sm" />
-              </a>
+              </Link>
             </div>
             <p className=" text-gray-400">or use you email account</p>
 
@@ -112,7 +112,7 @@ const login = async (values) => {
                         />{" "}
                         Remember Me
                       </label>
-                      <a className="text-sm">Forget Password?</a>
+                      <Link href={""} className="text-sm">Forget Password?</Link>
                     </div>
                     <button type="submit" className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-green-500 hover:text-white hover:cursor-pointer">
                       Sign In

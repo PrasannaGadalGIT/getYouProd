@@ -25,15 +25,15 @@ const Login = () => {
               </h2>
               <div className=" border-2 w-10 border-green-500 inline-block "></div>
               <div className=" flex justify-center my-2">
-                <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                <Link  href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                   <TiSocialFacebook className=" text-sm" />
-                </a>
-                <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                </Link>
+                <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                   <FaGoogle className=" text-sm" />
-                </a>
-                <a className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                </Link>
+                <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
                   <FaLinkedin className=" text-sm" />
-                </a>
+                </Link>
               </div>
               <p className=" text-gray-400">or use you email account</p>
 
@@ -103,7 +103,7 @@ const Login = () => {
                           />{" "}
                           Remember Me
                         </label>
-                        <a className="text-sm">Forget Password?</a>
+                        <Link href={""} className="text-sm">Forget Password?</Link>
                       </div>
                       <Link
                         type="submit"
@@ -144,12 +144,12 @@ const Login = () => {
             </>
           ) : (
             <>
-              <a
+              <Link href={""}
                 className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
                 onClick={() => setSignUp(true)}
               >
                 Sign Up
-              </a>
+              </Link>
               <Link href={"/"} className=" block">
                 Already an user?
               </Link>

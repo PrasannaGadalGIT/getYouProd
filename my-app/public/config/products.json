@@ -3,30 +3,30 @@
 {
     "products": [
       {
-        "id": 1,
+        "id": "1",
         "name": "White resting Chair",
         "description": "Description for Product 1",
-        "price": 19.99,
+        "price": "19.99",
         "image": "/images/products/furniture1.jpeg"
       },
       {
-        "id": 2,
+        "id": "2",
         "name": "Working char",
         "description": "Description for Product 2",
-        "price": 29.99,
+        "price": "29.99",
         "image": "/images/products/furniture2.jpeg"
       },
       {
-        "id": 3,
+        "id": "3",
         "name": "Revolving Chair",
         "description": "Description for Product 3",
-        "price": 39.99,
+        "price": "39.99",
         "image": "/images/products/furniture3.jpeg"
       },{
-        "id": 3,
+        "id":"4",
         "name": "Chair With Kusan",
         "description": "Description for Product 3",
-        "price": 39.99,
+        "price": "39.99",
         "image": "/images/products/furniture4.jpeg"
       }
     ]
