@@ -27,13 +27,13 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
-function NavBar({ tailwindClasses }) {
+function NavBar({ tailwindClasses }, {products}) {
   const { id, email, username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
- 
+  const {cartItems} = useSelector((state) => state.cartItems)
   
-  
+  console.log(cartItems)
   const logOut = async (values) => {
     const requestOptions = {
       method: "POST",
@@ -61,8 +61,8 @@ function NavBar({ tailwindClasses }) {
         <Link href="">Contact Us</Link>
       </div>
       <div className=" flex justify-end">
-        <NavigationMenu className=" ">
-          <NavigationMenuList>
+        <NavigationMenu>
+          <NavigationMenuList >
             <NavigationMenuItem>
               <NavigationMenuTrigger className=" -mt-2">
                 <Link href={""}>
@@ -70,7 +70,7 @@ function NavBar({ tailwindClasses }) {
                   <ShoppingCart />
                 </Link>
               </NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent  className=" bg-gray-100">
                 <ul className="grid gap-3 p-6 w-[250px] "></ul>
               </NavigationMenuContent>
             </NavigationMenuItem>

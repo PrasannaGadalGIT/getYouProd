@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { Heart, ShoppingCart } from "lucide-react";
-import { setCartDetails } from "@/Redux/reducers/addToCart";
+
+import { setProductDetails } from "@/Redux/reducers/productDetailsSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -11,7 +11,7 @@ function ProductCard({ product }) {
  const router = useRouter()
 
  const handleAddToCart = () => {
-  dispatch(setCartDetails(product));
+  dispatch(setProductDetails(product));
   router.push('/products')
 };
 
@@ -38,12 +38,7 @@ function ProductCard({ product }) {
               {product.price}
             </p>
             <div className=" flex justify-around text-white">
-              <button>
-                <ShoppingCart />
-              </button>
-              <button>
-                <Heart />
-              </button>
+              
             </div>
           </div>
         </div>
