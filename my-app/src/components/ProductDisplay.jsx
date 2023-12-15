@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Heart, ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { cartReducer, setCartDetails } from "@/Redux/reducers/cartitemSlice";
-import { addToCart } from "@/Redux/actions/cartActions";
+import { addToCart } from "@/Redux/reducers/cartitemSlice";
 import { resetCart } from "@/Redux/actions/cartActions";
 
 import {
@@ -41,7 +41,8 @@ function ProductDisplay() {
     productId : productId,
     productName : productName,
     image : image,
-    price : price
+    price : price,
+    quantity : counter
   }
 
   return (
@@ -53,7 +54,7 @@ function ProductDisplay() {
         <h1 className=" text-4xl my-5 text-green-700">
           Discover The Best Furniture
         </h1>
-        <h2 className=" text-3xl my-5 text-green-700">${price}</h2>
+        <h2 className=" text-3xl my-5 text-green-700">Rs {price}</h2>
         <div className=" flex justify-between w-[30rem] my-5">
           <h4 className=" text-xl  font-bold">Color</h4>
           <Select>

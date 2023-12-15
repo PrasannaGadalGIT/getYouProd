@@ -30,12 +30,15 @@ function ProductCard({ product }) {
             height={0}
             className=" w-full h-full z-0 rounded-2xl"
           />
-          <div className=" border border-green h-24 w-full rounded-2xl   bg-green-700"  onClick={() => handleAddToCart()}>
+          <div className=" border border-green h-24 w-full rounded-2xl   bg-green-700"  >
             <h4 className=" text-center text-xl text-white font-bold">
               {product.name}
             </h4>
             <p className=" text-center text-xl text-white font-bold">
               {product.price}
+            </p>
+            <p className=" text-center text-sm text-white font-bold hover:underline hover:cursor-pointer" onClick={() => handleAddToCart()}>
+              More Details
             </p>
             <div className=" flex justify-around text-white">
               

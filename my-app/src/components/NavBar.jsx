@@ -26,14 +26,15 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-
-function NavBar({ tailwindClasses }, {products}) {
+import { resetCart } from "@/Redux/actions/cartActions";
+import { Trash2 } from "lucide-react";
+import CartCard from "./CartCard";
+function NavBar({ tailwindClasses }, { products }) {
   const { id, email, username } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const router = useRouter();
-  const {cartItems} = useSelector((state) => state.cartItems)
-  
-  console.log(cartItems)
+  const { cartItems } = useSelector((state) => state.cartItems);
+
   const logOut = async (values) => {
     const requestOptions = {
       method: "POST",
@@ -61,8 +62,8 @@ function NavBar({ tailwindClasses }, {products}) {
         <Link href="">Contact Us</Link>
       </div>
       <div className=" flex justify-end">
-        <NavigationMenu>
-          <NavigationMenuList >
+        <NavigationMenu className=" ">
+          <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className=" -mt-2">
                 <Link href={""}>
@@ -70,8 +71,34 @@ function NavBar({ tailwindClasses }, {products}) {
                   <ShoppingCart />
                 </Link>
               </NavigationMenuTrigger>
-              <NavigationMenuContent  className=" bg-gray-100">
-                <ul className="grid gap-3 p-6 w-[250px] "></ul>
+              <NavigationMenuContent className=" bg-gray-100 flex">
+                <button
+                  className=" flex bg-green-700 text-white font-semibold p-2 float-right my-2 mx-2 "
+                  onClick={() => dispatch(resetCart())}
+                >
+                  <Trash2
+                    strokeWidth={1}
+                    width={20}
+                    className=" relative top-2/4"
+                  />
+                </button>
+                <ul className="grid gap-3 p-6 w-[290px]">
+                  {cartItems.length > 0 ? (
+                    cartItems.map((item) => (
+                      <li key={item.productId} className=" flex">
+                     <CartCard item={item}/>
+                      </li>
+                    ))
+                  ) : (
+                    <p className=" text-lg text-gray-700 font-semibold text-center">
+                      No items in cart.....
+                    </p>
+                  )}
+
+                  <button className=" text-xl bg-green-700 text-white font-semibold my-2 w-[200px] align-middle p-1">
+                    Checkout
+                  </button>
+                </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -80,13 +107,14 @@ function NavBar({ tailwindClasses }, {products}) {
           {" "}
           <Search />
         </Link>
+
         <Link href={""}>
           {" "}
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Link href={""}>
+              <Link href={""} className=" mr-20">
                 {" "}
-                <LogOut/>
+                <LogOut />
               </Link>
             </AlertDialogTrigger>
             <AlertDialogContent className=" bg-green-600">
