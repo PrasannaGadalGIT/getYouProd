@@ -7,9 +7,9 @@ const CartCard = (item) => {
     <div className=" flex">
       <Image
         src={item.item.image}
-        height={50}
-        width={50}
-        className=" my-4"
+        height={60}
+        width={60}
+        className=" my-6"
         alt="loading..."
       />
       <div className=" text-sm  my-4 mx-5 flex flex-col">

@@ -5,6 +5,7 @@ import { removeItem } from '../actions/cartActions';
 
 export const initialState = {
   cartItems: [], // Array to store items in the cart
+  shipping : 100
 };
 const cartSlice = createSlice({
   name: "cartItem",
@@ -13,11 +14,11 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.cartItems.find(item => item.productId === newItem.productId);
-      const price = action.payload.price * action.payload.quantity;
+      
       if (!existingItem) {
         return {
           ...state,
-          cartItems: [...state.cartItems,{ ...newItem, quantity: newItem.quantity, price: newItem.price * newItem.quantity }],
+          cartItems: [...state.cartItems,{ ...newItem, quantity: newItem.quantity, price: newItem.price * newItem.quantity, total : newItem.price + 100 }],
         };
       }
 

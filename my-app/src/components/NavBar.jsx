@@ -86,7 +86,7 @@ function NavBar({ tailwindClasses }, { products }) {
                   {cartItems.length > 0 ? (
                     cartItems.map((item) => (
                       <li key={item.productId} className=" flex">
-                     <CartCard item={item}/>
+                        <CartCard item={item} />
                       </li>
                     ))
                   ) : (
@@ -95,8 +95,8 @@ function NavBar({ tailwindClasses }, { products }) {
                     </p>
                   )}
 
-                  <button className=" text-xl bg-green-700 text-white font-semibold my-2 w-[200px] align-middle p-1">
-                    Checkout
+                  <button className=" text-xl bg-green-700 text-white font-semibold my-2 w-[200px] align-middle p-1" onClick={() => router.push('/products/cartDetail')}>
+                  &gt;&gt;&gt;
                   </button>
                 </ul>
               </NavigationMenuContent>

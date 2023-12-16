@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
 import Body from "@/components/Body";
+
 const Shop = () => {
   const [productDetail, setProductDetails] = useState([]);
   const tailwindClasses = " flex justify-around text-black p-4";
@@ -35,7 +36,9 @@ const Shop = () => {
       
       <NavBar tailwindClasses={tailwindClasses} />
       <Body text="Shop"/>
-
+    <div>
+      
+    </div>
       <div className="grid grid-cols-3 ">
         {productDetail.length > 0
           ? productDetail.map((item, index) => {
@@ -43,12 +46,15 @@ const Shop = () => {
             })
           : "loading.."}
       </div>
+    
+            <div>
+            <Footer/>
+            </div>
+      
 
-      <div>
-        <Footer/>
-      </div>
     </div>
   );
 };
+ReactDOM.render(<App />, document.getElementById('root'));
 
 export default Shop;
