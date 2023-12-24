@@ -1,4 +1,4 @@
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/User/NavBar";
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Footer from "@/components/Footer";
+import Footer from "@/components/User/Footer";
 
 function Home() {
   const [whatToDo, setWhatToDo] = useState({});

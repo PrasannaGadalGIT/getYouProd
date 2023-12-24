@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import logger from "redux-logger";
-import storage from 'redux-persist/lib/storage' //using local storage
-import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
 
 import loginUserSlice from "./reducers/loginUserSlice";
-import productDetailSLice from "./reducers/productDetailsSlice";
-import cartItemSlice from "./reducers/cartitemSlice";
+import productDetailSlice from "./reducers/productDetailsSlice"; // Corrected naming
+import cartItemSlice from "./reducers/cartitemSlice"; // Corrected naming
 
 const persistConfig = {
   key: 'root',
@@ -15,17 +15,18 @@ const persistConfig = {
 
 const reducer = combineReducers({
   user: loginUserSlice,
-  productDetails: productDetailSLice,
-  cartItems : cartItemSlice
-  
+  productDetails: productDetailSlice,
+  cartItems: cartItemSlice,
 });
-// the user os persisted even after the login
-const persistedReducer = persistReducer(persistConfig, reducer)
+
+
+const persistedReducer = persistReducer(persistConfig, reducer);
 
 export const store = configureStore({
-  reducer : persistedReducer, //reducer is assigned with the persisted reducer 
-  middleware : [logger] //runs in the middle execution of the program
+  reducer: persistedReducer, // Fix: pass the persisted reducer here
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(logger),
 });
+export const persistor = persistStore(store);
 
-export default store;
-export const persistor = persistStore(store)
+export { loginUserSlice, productDetailSlice, cartItemSlice }; // Export your slices if needed

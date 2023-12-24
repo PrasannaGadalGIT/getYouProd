@@ -1,12 +1,12 @@
-import CartCard from "@/components/CartCard";
-import NavBar from "@/components/NavBar";
+import CartCard from "@/components/User/CartCard";
+import NavBar from "@/components/User/NavBar";
 import React from "react";
 import { useSelector } from "react-redux";
-import Checkout from "@/components/CartDetails";
+import Checkout from "@/components/User/CartDetails";
 import { useState } from "react";
-import Footer from "@/components/Footer";
-import Body from "@/components/Body";
-import Confirmation from "@/components/Confirmation";
+import Footer from "@/components/User/Footer";
+import Body from "@/components/User/Body";
+import Confirmation from "@/components/User/Confirmation";
 
 function index() {
   const tailwindClasses = " flex justify-around text-black p-4";

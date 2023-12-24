@@ -1,22 +1,19 @@
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Login from "./Login";
-import Home from "./Home/";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import Home from "./Home";
+import HomeAdmin from "./HomeAdmin";
 
-export default function Index() {
-  const { userToken, id } = useSelector((state) => state.user);
-  const [userDetail, setUserDetails] = useState({})
-  
-  
+const Index = () => {
+  const { userToken, role } = useSelector((state) => state.user);
+  const router = useRouter();
 
-  if (userToken) {
-    return <Home />;
-   
-  }
   return (
-    <>
-      <Login />
-    </>
+    <div>
+      {!userToken ? <Login /> : role == "User" ? <Home /> : <HomeAdmin />}
+    </div>
   );
-}
+};
+
+export default Index;

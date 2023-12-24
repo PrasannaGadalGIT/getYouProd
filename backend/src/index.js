@@ -8,11 +8,12 @@ app.use(express.json());
 const connectDb  = require('./DBConnect/DBConnect')
 const loginRoute = require("./Route/Login")
 const userRoute = require("./Route/User")
-
+const productRoute = require('./Route/Product')
 connectDb()
 
 app.use("/", userRoute)
 app.use("/", loginRoute)
+app.use("/", productRoute)
 
 
 

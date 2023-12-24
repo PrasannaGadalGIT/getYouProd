@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/User/NavBar";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import ProductCard from "@/components/ProductCard";
-import Footer from "@/components/Footer";
-import Body from "@/components/Body";
+import ProductCard from "@/components/User/ProductCard";
+import Footer from "@/components/User/Footer";
+import Body from "@/components/User/Body";
+import ProductCategories from "@/components/User/ProductCategories";
+import { useRouter } from "next/router";
 
 const Shop = () => {
   const [productDetail, setProductDetails] = useState([]);
@@ -29,32 +31,34 @@ const Shop = () => {
   useEffect(() => {
     productDetails();
   }, []);
-  
+
+  const router = useRouter();
 
   return (
     <div>
-      
       <NavBar tailwindClasses={tailwindClasses} />
-      <Body text="Shop"/>
-    <div>
-      
-    </div>
-      <div className="grid grid-cols-3 ">
-        {productDetail.length > 0
-          ? productDetail.map((item, index) => {
-              return <ProductCard product={item} key={index}/>;
+      <Body text="Shop" />
+      <div className=" flex justify-between">
+        <div>
+          {/*representing the categories */}
+          <ProductCategories />
+        </div>
+        <div className="flex flex-wrap mx-8 w-3/4">
+          {productDetail.length > 0 ? (
+            productDetail.map((item, index) => {
+              return <ProductCard product={item} key={index} />;
             })
-          : "loading.."}
+          ) : (
+            <div>Loading...</div>
+          )}
+        </div>
       </div>
-    
-            <div>
-            <Footer/>
-            </div>
-      
 
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
-ReactDOM.render(<App />, document.getElementById('root'));
 
 export default Shop;

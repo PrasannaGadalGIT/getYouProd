@@ -3,6 +3,7 @@ import { resetCart } from '../actions/cartActions';
 import { removeItem } from '../actions/cartActions'; 
 
 
+
 export const initialState = {
   cartItems: [], // Array to store items in the cart
   shipping : 100

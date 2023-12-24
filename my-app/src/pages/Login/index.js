@@ -22,14 +22,14 @@ const login = async (values) => {
     };
     const res = await fetch("http://localhost:3002/login", requestOptions);
     const data = await res.json()
-    console.log(data)
     
+    console.log(data)
   
     if(data.logedIn){
       dispatch(setUserDetails(data))
     }
   }catch(e){
-    alert(e)
+    console.log(e)
   }
   
 }

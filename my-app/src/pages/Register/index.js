@@ -8,8 +8,52 @@ import Link from "next/link";
 import * as Yup from "yup";
 import { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
-const Login = () => {
+import * as React from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Router, useRouter } from "next/router";
+
+export function SelectDemo({ onChange }) {
+  const handleSelectChange = (value) => {
+    onChange(value);
+  };
+  return (
+    <Select onChange={handleSelectChange}>
+      <SelectTrigger className="w-full border-0 text-gray-400 font-semibold">
+        <SelectValue placeholder="Role" />
+      </SelectTrigger>
+      <SelectContent className=" bg-gray-200 w-full">
+        <SelectGroup>
+          <SelectLabel onChange={(value) => console.log(value)}>
+            Role
+          </SelectLabel>
+          <SelectItem value="client">Client</SelectItem>
+          <SelectItem value="admin">Admin</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  );
+}
+
+const Register = () => {
   const [signUp, setSignUp] = useState(false);
+  const [selctedValue, setSelectedValue] = useState("");
+
+  const options = [
+    { value: "Client", label: "Client" },
+    { value: "Admin", label: "Admin" },
+    
+  ];
+
+  const router = useRouter();
 
   return (
     <main className=" flex items-center justify-center h-screen w-full text-center">
@@ -25,13 +69,22 @@ const Login = () => {
               </h2>
               <div className=" border-2 w-10 border-green-500 inline-block "></div>
               <div className=" flex justify-center my-2">
-                <Link  href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                <Link
+                  href={""}
+                  className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer"
+                >
                   <TiSocialFacebook className=" text-sm" />
                 </Link>
-                <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                <Link
+                  href={""}
+                  className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer"
+                >
                   <FaGoogle className=" text-sm" />
                 </Link>
-                <Link href={""} className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer">
+                <Link
+                  href={""}
+                  className=" border-2 border-gray-200 rounded-full p-3 mx-1 hover:cursor-pointer"
+                >
                   <FaLinkedin className=" text-sm" />
                 </Link>
               </div>
@@ -41,15 +94,36 @@ const Login = () => {
                 initialValues={{
                   email: "",
                   password: "",
+                  username: "",
+                 
                 }}
                 onSubmit={async (values) => {
-                  const requestOptions = {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(values),
-                  };
-                  fetch("http://localhost:3002/register", requestOptions);
+                  try {
+                    const requestOptions = {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(values),
+                    };
+
+                    const response = await fetch(
+                      "http://localhost:3002/register",
+                      requestOptions
+                    );
+
+                    if (!response.ok) {
+                      throw new Error("Failed to register");
+                    }
+
+                    // Handle successful registration, e.g., redirect or show a success message
+                  } catch (error) {
+                    console.error("Error registering:", error);
+                    // Handle the error, e.g., show an error message to the user
+                  }
+                  
+                  router.push("/")
+                  
                 }}
+               
               >
                 {({ errors, touched }) => (
                   <Form>
@@ -89,9 +163,24 @@ const Login = () => {
                           type="password"
                           className=" bg-gray-200  outline-none flex-1"
                         />
-                        {errors.email && touched.email ? (
+                        {errors.password && touched.password ? (
                           <div>{errors.password}</div>
                         ) : null}
+                      </div>
+                      <div className=" bg-gray-200 w-60 p-2 flex items-center my-2">
+                        <Field
+                          as="select"
+                          name="selectedOption"
+                          className=" w-full bg-slate-200 text-gray-400 outline-none"
+                        >
+                          <option value="" label="Select an option"/>
+                          {options.map((option) => (
+                            <option key={option.value} value={option.value}  className=" text-black w-full">
+                              {option.label}
+                            </option>
+                          ))}
+                        </Field>
+                      
                       </div>
 
                       <div className=" flex justify-between w-64 mb-5">
@@ -103,15 +192,17 @@ const Login = () => {
                           />{" "}
                           Remember Me
                         </label>
-                        <Link href={""} className="text-sm">Forget Password?</Link>
+                        <Link href={""} className="text-sm">
+                          Forget Password?
+                        </Link>
                       </div>
-                      <Link
+                      <button
                         type="submit"
                         className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-green-500 hover:text-white hover:cursor-pointer"
                         href={"/"}
                       >
                         Sign Up
-                      </Link>
+                      </button>
                     </div>
                   </Form>
                 )}
@@ -119,7 +210,7 @@ const Login = () => {
             </div>
           </div>
         ) : (
-         ""
+          ""
         )}
 
         {/*Trigger to Sign Up */}
@@ -133,7 +224,6 @@ const Login = () => {
             <>
               <Link
                 className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
-               
                 href={"/"}
               >
                 Sign In
@@ -144,7 +234,8 @@ const Login = () => {
             </>
           ) : (
             <>
-              <Link href={""}
+              <Link
+                href={""}
                 className=" border-2 rounded-3xl py-2 px-12 inline-block font-semibold hover:bg-white hover:text-green-500 hover:cursor-pointer"
                 onClick={() => setSignUp(true)}
               >
@@ -155,11 +246,10 @@ const Login = () => {
               </Link>
             </>
           )}
-          
         </div>
       </div>
     </main>
   );
 };
 
-export default Login;
+export default Register;

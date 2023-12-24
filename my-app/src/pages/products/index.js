@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/User/NavBar";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import ProductCard from "@/components/ProductCard";
-import Footer from "@/components/Footer";
-import Body from "@/components/Body";
-import ProductDisplay from "@/components/ProductDisplay";
+import ProductCard from "@/components/User/ProductCard";
+import Footer from "@/components/User/Footer";
+import Body from "@/components/User/Body";
+import ProductDisplay from "@/components/User/ProductDisplay";
 
 
 

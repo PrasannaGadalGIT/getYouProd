@@ -17,7 +17,8 @@ const UserSlice = createSlice({
                 id : actions.payload.id,
                 email : actions.payload.email,
                 userToken : actions.payload.userToken,
-                username : actions.payload.username
+                username : actions.payload.userName,
+                role : actions.payload.selectedOption
             }
         },
 

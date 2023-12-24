@@ -41,6 +41,7 @@ const loginUser = async (req, res) => {
         userToken: token,
         email: data.email,
         userName: data.username,
+        selectedOption : data.selectedOption
       });
     }
   }
