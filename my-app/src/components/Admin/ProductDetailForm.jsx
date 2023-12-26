@@ -4,9 +4,38 @@ import { useState } from "react";
 
 function ProductDetailForm() {
   const field_style =
-    "bg-gray-200 outline-none flex-1 w-[30rem] h-10 my-2 p-2";
+    "bg-white outline-none flex-1 w-[30rem] h-10 my-5 p-2";
 
   const [file, setfile] = useState(null);
+
+  const handleImageSave = (e)=>{
+      
+    setfile(e.target.files[0])
+  }
+
+const handleSave = async(values) => {
+ 
+  const formData = new FormData()
+
+  Object.entries(values).map(item=>{
+    formData.append(item[0], item[1])
+  })
+  formData.append('productPic', file)
+  try {
+    const requestOptions = {
+      method: "POST",
+      body: formData,
+    };
+    await fetch(
+      "http://localhost:3002/addNewProducts",
+      requestOptions
+    );
+  } catch (err) {
+    alert("Enter Information");
+  }
+
+   
+  };
 
   return (
     <>
@@ -17,35 +46,20 @@ function ProductDetailForm() {
           productPic: "",
           productDetails: "",
         }}
-        onSubmit={async (values) => {
-          // Set the file here before making the API call
-          setfile(values.productPic);
+        onSubmit={(values) => {
+           
+            handleSave(values);
+           
           
-          const formData = new FormData();
-
-          Object.entries(values).map((item) => {
-            formData.append(item[0], item[1]);
-          });
-
-          try {
-            const requestOptions = {
-              method: "POST",
-              body: formData,
-            };
-            await fetch(
-              "http://localhost:3002/addNewProducts",
-              requestOptions
-            );
-          } catch (err) {
-            alert("Enter Information");
           }
-        }}
+        }
       >
         {({ errors, touched }) => (
           <Form className=" h-auto border-black-1 text-center relative top-7">
-            <h2 className=" text-2xl font-bold">Product</h2>
+           
 
-            <div className=" relative top-14 left-5">
+            <div className=" relative top-14 left-5 bg-gray-800 p-7 text-white">
+            <h2 className=" text-2xl font-bold mb-7">Product</h2>
               <div>
                 <Field
                   name="productName"
@@ -69,14 +83,11 @@ function ProductDetailForm() {
                 ) : null}
               </div>
               <div className=" ">
-                <Field
+                <input
                   name="productPic"
                   type="file"
                   className={field_style}
-                  onChange={(e) => {
-                    // Set the file in the form values
-                    setfile(e.target.files[0]);
-                  }}
+                  onChange={handleImageSave}
                 />
               </div>
 
@@ -94,7 +105,7 @@ function ProductDetailForm() {
 
               <button
                 type="submit"
-                className=" bg-black text-white p-3 rounded-xl hover:bg-gray-700 my-2"
+                className=" bg-white text-black font-bold p-3 rounded-xl hover:bg-gray-700 my-2"
               >
                 Add product
               </button>

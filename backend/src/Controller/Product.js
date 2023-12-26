@@ -1,31 +1,34 @@
 const Product = require('../Model/Product');
-
-const addNewProducts = (req, res) => {
-    const data = Product.create(req.body)
-
+const path = require("path");
+const fs = require("fs");
+const addNewProducts = async(req, res) => {
+   
+    req.body.productPic = req.file.filename
+    const data =  await Product.create(req.body)
+  
     if(data){
-       
-            res.json({
-              msg: "product add success"
-            })
+      res.json({
+        msg : "product added successfully"
+      })
     }
+   
 }
 const getProductImage = async (req, res) => {
     try {
-      const data = await Order.findById(req?.params?.id); //getting vehicles by id
+      const data = await Product.findById(req?.params?.id); //getting vehicles by id
       
       const imagePath = path.join(
         __dirname,
-        "../../uploads/order",
-        data.foodImage
+        "../../uploads/products",
+        data.productPic
       ); //acessing the imagePath
       const defaultPath = path.join(
         __dirname,
-        "../../uploads/order",
-        "pizza.jpg"
+        "../../uploads/products",
+        "RGIbanez.png"
       ); //giving the default image if not uploaded
   
-      if (fs.existsSync(imagePath) && data.foodImage) {
+      if (fs.existsSync(imagePath) && data.productPic) {
         res.sendFile(imagePath);
       } else {
         res.sendFile(defaultPath);
