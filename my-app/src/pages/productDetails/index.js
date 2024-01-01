@@ -8,8 +8,8 @@ function Productdetails() {
     <>
     <div className='flex'>
     <NavMenue/>
-    <div className=' h-[70vh] bg-gray-800 relative top-24'>
-      <h2 className=' text-center font-bold text-4xl text-white relative top-5'>Stock Details</h2>
+    <div className=' h-[90vh] bg-gray-800 relative top-8 p-0 rounded-2xl'>
+      <h2 className=' text-center font-bold text-4xl text-white relative top-1'>Stock Details</h2>
     <BarGraphProductDetails/>
     </div>
    

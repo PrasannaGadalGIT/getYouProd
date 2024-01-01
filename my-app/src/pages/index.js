@@ -11,7 +11,7 @@ const Index = () => {
 
   return (
     <div>
-      {!userToken ? <Login /> : role == "User" ? <Home /> : <HomeAdmin />}
+      {!userToken ? <Login /> : role == "Client" ? <Home /> : <HomeAdmin />}
     </div>
   );
 };

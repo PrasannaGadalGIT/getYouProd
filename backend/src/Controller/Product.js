@@ -5,12 +5,12 @@ const addNewProducts = async(req, res) => {
    
     req.body.productPic = req.file.filename
     const data =  await Product.create(req.body)
-  
     if(data){
       res.json({
-        msg : "product added successfully"
+        msg : "Product Added successfully"
       })
     }
+  
    
 }
 const getProductImage = async (req, res) => {

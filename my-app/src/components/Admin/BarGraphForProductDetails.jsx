@@ -10,6 +10,14 @@ import {
   Legend
 } from "recharts";
 
+const ProductDetails = () => {
+    try{
+        
+    }catch(e){
+        alert(e)
+    }
+}
+
 const data = [
   {
     name: "Page A",
@@ -58,12 +66,12 @@ const data = [
 export default function BarGraphProductDetails() {
   return (
     <LineChart
-      width={800}
-      height={400}
+      width={700}
+      height={570}
       data={data}
       margin={{
-        top: 50,
-        right: 20,
+        top: 40,
+        right: 50,
         left: 20,
         bottom: 0
       }}
@@ -73,12 +81,7 @@ export default function BarGraphProductDetails() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-      />
+    
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
   );

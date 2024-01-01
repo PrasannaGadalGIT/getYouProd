@@ -7,7 +7,7 @@ function HomeAdmin() {
   return (
     <>
     <NavMenue/>
-    <ProductDetailForm/>
+    
     </>
     
   )

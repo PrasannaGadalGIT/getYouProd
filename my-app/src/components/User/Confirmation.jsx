@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../components/CheckOut";
+import CheckoutForm from "../User/CheckOut";
 
 import {
   Dialog,
