@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -10,14 +10,28 @@ import {
   Legend
 } from "recharts";
 
-const ProductDetails = () => {
-    try{
-        
-    }catch(e){
-        alert(e)
-    }
+
+
+export default function BarGraphProductDetails() {
+
+  const [productDetails, setProductDetails] = useState([])
+
+  const fetchProductDetails = async () => {
+
+       const res =  await fetch('http://localhost:3002/getProductDetails')
+       const data = await res.json()
+
+       setProductDetails(data.productDetails)
+   
 }
 
+useEffect(() => {
+  fetchProductDetails()
+}, [])
+
+const productName = productDetails.map((item) => {
+  return (item.productName)
+})
 const data = [
   {
     name: "Page A",
@@ -63,12 +77,12 @@ const data = [
   }
 ];
 
-export default function BarGraphProductDetails() {
+
   return (
     <LineChart
       width={700}
       height={570}
-      data={data}
+      data={productDetails}
       margin={{
         top: 40,
         right: 50,
@@ -77,12 +91,12 @@ export default function BarGraphProductDetails() {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="productName" />
       <YAxis />
       <Tooltip />
       <Legend />
     
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="stock" stroke="#82ca9d" />
     </LineChart>
   );
 }

@@ -38,4 +38,12 @@ const getProductImage = async (req, res) => {
     }
   };
 
-module.exports = {addNewProducts, getProductImage}
+  const getProductDetails = async (req, res) => {
+    const data = await Product.find();
+
+    res.json({
+      productDetails : data
+    })
+  }
+
+module.exports = {addNewProducts, getProductImage, getProductDetails}

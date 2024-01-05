@@ -48,14 +48,17 @@ const loginUser = async (req, res) => {
 };
 const logOutuser = async (req, res) => {
   const data = await User.findOne({ email: req.body.email });
-  res.json({
-    logedIn: false,
-    msg: "logged out",
+ 
+    res.json({
+      logedIn: false,
+      msg: "logged out",
+  
+      userToken: null,
+      email: "",
+      userName: "",
+    });
+  }
+ 
 
-    userToken: null,
-    email: "",
-    userName: "",
-  });
-};
 
 module.exports = { registerNewUser, loginUser, logOutuser };
