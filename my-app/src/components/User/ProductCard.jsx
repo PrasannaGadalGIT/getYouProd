@@ -15,6 +15,8 @@ function ProductCard({ product }) {
   router.push('/products')
 };
 
+
+
   return (
     <>
       <div className=" p-3 ">
@@ -24,7 +26,7 @@ function ProductCard({ product }) {
         </div>
         <div className=" border border-gray h-80 w-72 rounded-2xl bg-gray-200 z-0 mb-20">
           <Image
-            src={product.image}
+            src={`http://localhost:3002/getProductImage/${product._id}`}
             alt="loading..."
             width={500}
             height={0}

@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+// Importing necessary components from recharts
 import {
   LineChart,
   Line,
@@ -9,82 +8,28 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import { useState, useEffect } from "react";
+export default function LineChartProductDetails() {
+  const [productDetails, setProductDetails] = useState([]);
 
-
-
-export default function BarGraphProductDetails() {
-
-  const [productDetails, setProductDetails] = useState([])
-
+  // Fetch product details from the server
   const fetchProductDetails = async () => {
+    const res = await fetch("http://localhost:3002/getProductDetails");
+    const data = await res.json();
+    setProductDetails(data.productDetails);
+  };
 
-       const res =  await fetch('http://localhost:3002/getProductDetails')
-       const data = await res.json()
-
-       setProductDetails(data.productDetails)
-   
-}
-
-useEffect(() => {
-  fetchProductDetails()
-}, [])
-
-const productName = productDetails.map((item) => {
-  return (item.productName)
-})
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-];
-
+  useEffect(() => {
+    fetchProductDetails();
+  }, []);
 
   return (
     <LineChart
       width={700}
-      height={570}
+      height={650}
       data={productDetails}
       margin={{
-        top: 40,
+        top: 60,
         right: 50,
         left: 20,
         bottom: 0
@@ -93,10 +38,31 @@ const data = [
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="productName" />
       <YAxis />
-      <Tooltip />
-      <Legend />
-    
-      <Line type="monotone" dataKey="stock" stroke="#82ca9d" />
+      <Tooltip content={<CustomTooltip />} />
+     
+
+      {/* Map through productDetails and render a Line for each product */}
+      {productDetails.map((product, index) => (
+        <Line
+          key={index}
+          type="monotone"
+          dataKey="stock"
+          stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`} // Random color
+        />
+      ))}
     </LineChart>
   );
 }
+
+// CustomTooltip component to customize tooltip content
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className=" text-white font-semibold">
+        <p>{`Product: ${label}`}</p>
+        <p>{`Stock: ${payload[0].value}`}</p>
+      </div>
+    );
+  }
+  return null;
+};

@@ -22,6 +22,8 @@ function ProductDisplay() {
   const { productId, productName, price, description, image } = useSelector(
     (state) => state.productDetails
   );
+
+  console.log(productId)
   const [counter, setcounter] = useState(1);
   const dispatch = useDispatch();
 
@@ -48,7 +50,7 @@ function ProductDisplay() {
   return (
     <div className=" flex justify-center my-20">
       <div>
-        <Image src={image} width={500} height={500} alt="loading" />
+        <Image src={`http://localhost:3002/getProductImage/${item.productId}`} width={500} height={500} alt="loading" />
       </div>
       <div className=" ml-20">
         <h1 className=" text-4xl my-5 text-green-700">

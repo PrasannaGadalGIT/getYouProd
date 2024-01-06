@@ -16,11 +16,11 @@ const ProductSlice = createSlice({
       return {
         ...state,
 
-        productId: action.payload.id,
+        productId: action.payload._id,
         price: action.payload.price,
-        productName: action.payload.name,
-        description: action.payload.description,
-        image : action.payload.image
+        productName: action.payload.productName,
+        description: action.payload.productDetails,
+        image : action.payload.productPic
       };
     },
   },

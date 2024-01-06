@@ -110,18 +110,17 @@ function NavBar({ tailwindClasses }, { products }) {
           </NavigationMenuList>
         </NavigationMenu>
         <Link href={""} className=" mr-6">
-          {" "}
+    
           <Search />
         </Link>
 
         <Link href={""}>
-          {" "}
+  
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Link href={""} className=" mr-20">
-                {" "}
+              <div  className=" mr-20">
                 <LogOut />
-              </Link>
+              </div>
             </AlertDialogTrigger>
             <AlertDialogContent className=" bg-green-600">
               <AlertDialogHeader>

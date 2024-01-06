@@ -14,15 +14,13 @@ const Shop = () => {
 
   const productDetails = async () => {
     try {
-      const response = await fetch("/config/products.json");
+     
 
-      if (!response.ok) {
-        throw new Error("Faild to fetch");
-      }
+      const res = await fetch('http://localhost:3002/getProductDetails')
+      const data = await res.json()
 
-      const data = await response.json();
+      setProductDetails(data.productDetails)
 
-      setProductDetails(data.products);
     } catch (e) {
       alert(e);
     }

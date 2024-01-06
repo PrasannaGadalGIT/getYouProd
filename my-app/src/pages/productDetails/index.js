@@ -9,27 +9,8 @@ import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`
-);
 
-export function ScrollAreaDemo() {
-  return (
-    <ScrollArea className="h-72 w-48 rounded-md border">
-      <div className="p-4">
-        <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
-        {tags.map((tag) => (
-          <>
-            <div key={tag} className="text-sm">
-              {tag}
-            </div>
-            <Separator className="my-2" />
-          </>
-        ))}
-      </div>
-    </ScrollArea>
-  );
-}
+
 
 const Productdetails = () => {
   const [productDetails, setProductDetails] = useState([]);
@@ -46,23 +27,30 @@ const Productdetails = () => {
     <>
       <div className="flex">
         <NavMenue />
-        <div className=" h-[90vh] bg-gray-800 relative top-8 p-0 rounded-2xl">
-          <h2 className=" text-center font-bold text-4xl text-white relative top-1">
+        <div className=" h-[108vh] bg-gray-800 relative top-[1rem] p-0 rounded-2xl">
+          <h2 className=" text-center font-bold text-4xl text-white relative top-[1rem]">
             Stock Details
           </h2>
           <BarGraphProductDetails />
         </div>
-        <div>
+        <div className=" flex flex-col justify-between">
           <ProductDetailForm />
-          <ScrollArea className=" h-[16.7rem] w-[35rem]  block relative  top-12 left-5 rounded-2xl bg-gray-800">
+          <ScrollArea className=" h-[23rem] w-[42rem]  block relative  top-[1rem] left-5 rounded-2xl bg-gray-800 overflow-y-auto">
             <div className="p-4 ">
-              <h4 className="mb-4 text-xl font-medium leading-none text-white text-center">Added Product Details</h4>
+              <h4 className="text-xl font-medium leading-none text-white text-center">Added Product Details</h4>
               {productDetails.length > 0
               ? productDetails.map((item, index) => {
-                  return <DisplayProduct productDetails={item} key={index} />;
+                  return <>
+                  <DisplayProduct productDetails={item} key={index} />
+                        <Separator className="my-2 " />
+                  </>
+                  
                 })
+                
               : "Loading....."}
+            
             </div>
+          
           </ScrollArea>
           <div >
             

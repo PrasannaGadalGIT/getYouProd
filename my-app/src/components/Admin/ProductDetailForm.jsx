@@ -62,7 +62,7 @@ function ProductDetailForm() {
       >
         {({ errors, touched }) => (
           <Form className="  border-black-1 text-center relative">
-            <div className=" relative top-8 left-5 bg-gray-800 p-7 text-white h-[23rem] w-[35rem] rounded-2xl">
+            <div className=" relative top-[1rem] left-5 bg-gray-800 p-7 text-white h-[23rem] w-[42rem] rounded-2xl">
               <h2 className=" text-2xl font-bold mb-2">Product</h2>
               <div className=" flex gap-3">
                 <Field
