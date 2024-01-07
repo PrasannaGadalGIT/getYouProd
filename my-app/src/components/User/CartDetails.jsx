@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 function CartDetails({ item }) {
-    
+    console.log(item)
   return (
     <div className=" flex my-7 border-b border-black ">
       <table>
@@ -10,7 +10,7 @@ function CartDetails({ item }) {
         <tr>
           <td>
             <Image
-              src={item.image}
+              src={`http://localhost:3002/getProductImage/${item.productId}`}
               height={200}
               width={200}
               className=" my-4"

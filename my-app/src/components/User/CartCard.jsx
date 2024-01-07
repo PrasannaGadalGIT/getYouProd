@@ -3,10 +3,11 @@ import Image from "next/image";
 import { Trash2 } from "lucide-react";
 import { removeItem } from "@/Redux/actions/cartActions";
 const CartCard = (item) => {
+  console.log(item)
   return (
     <div className=" flex">
       <Image
-        src={item.item.image}
+        src={`http://localhost:3002/getProductImage/${item.item.productId}`}
         height={60}
         width={60}
         className=" my-6"

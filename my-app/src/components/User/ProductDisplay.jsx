@@ -23,7 +23,7 @@ function ProductDisplay() {
     (state) => state.productDetails
   );
 
-  console.log(productId)
+
   const [counter, setcounter] = useState(1);
   const dispatch = useDispatch();
 

@@ -54,12 +54,11 @@ function NavBar({ tailwindClasses }, { products }) {
         <Link href={{
           pathname: '/Home/[index]',
           query: {index: id}
-        }}>Furniture</Link>
+        }}>Guitar</Link>
       </div>
       <div className=" flex font-bold space-x-8 justify-center s">
         <Link href={{
-          pathname: '/Home/[index]',
-          query: {index: id}
+          pathname: '/',
         }}>Home</Link>
         <Link href="">About</Link>
         <Link href="/shop">Shop</Link>

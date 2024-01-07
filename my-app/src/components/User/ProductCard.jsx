@@ -15,7 +15,7 @@ function ProductCard({ product }) {
   router.push('/products')
 };
 
-
+  console.log(product)
 
   return (
     <>
@@ -34,7 +34,7 @@ function ProductCard({ product }) {
           />
           <div className=" border border-green h-24 w-full rounded-2xl   bg-green-700"  >
             <h4 className=" text-center text-xl text-white font-bold">
-              {product.name}
+              {product.productName}
             </h4>
             <p className=" text-center text-xl text-white font-bold">
               {product.price}
